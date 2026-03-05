@@ -1,36 +1,83 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo App</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main>
+        <section class="main">
+            <div class="container">
+                <button class="btn-primary" id="openModal">Agregar tarea</button>
+                <input type="text" class="search" placeholder="Buscar una tarea">
+            </div>
+            
+            
+        </section>
+    </main>
+ 
+    
+    <section class="tasks-section">
+    <div class="kanban">
 
-<div class="todo-app">
-  <h1>Todo List</h1>
+        <div class="column" id="Baja">
+            <h3>Baja</h3>
+            <div class="task-list"></div>
+        </div>
 
-  <div class="input-group">
-    <input type="text" id="taskInput" placeholder="Agregar nueva tarea...">
-    <button class="add-btn" id="addBtn">Add</button>
-  </div>
+        <div class="column" id="Media">
+            <h3>Media</h3>
+            <div class="task-list"></div>
+        </div>
 
-  <ul id="taskList"></ul>
+        <div class="column" id="Alta">
+            <h3>Alta</h3>
+            <div class="task-list"></div>
+        </div>
 
-  <div class="footer">
-    <p id="counter">0 tareas pendientes</p>
-
-    <div class="filters">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="active">Active</button>
-      <button class="filter-btn" data-filter="completed">Completed</button>
     </div>
+</section>
 
-    <button class="clear-btn" id="clearCompleted">Clear Completed</button>
-  </div>
-</div>
 
-<script src="script.js"></script>
+
+      <!-- Modal -->
+      <div class="modal" id="taskModal">
+        <div class="modal-content">
+          <h2>Nueva tarea</h2>
+
+          <form>
+            <label>Título</label>
+            <input type="text" required>
+
+            <label>Descripción</label>
+            <textarea rows="3"></textarea>
+
+            <label>Fecha límite</label>
+            
+            <input type="date" id="taskDate" min="" />
+
+            <label>Prioridad</label>
+            <select>
+              <option>Baja</option>
+              <option>Media</option>
+              <option>Alta</option>
+            </select>
+
+            <div class="modal-buttons">
+              <button type="submit" class="btn-primary">Guardar</button>
+              <button type="button" class="btn-secondary" id="closeModal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+
+
+
+
+    <script src="app.js"></script>
+
 </body>
 </html>

@@ -1,167 +1,346 @@
-/* =========================
-   RESET & BASE STYLES
-========================= */
+/* ==============================
+   RESET BÁSICO
+============================== */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: #f4f7fa;
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f172a; /* fondo oscuro principal */
+    color: #e2e8f0;
 }
 
-/* =========================
-   CONTAINER
-========================= */
-.todo-app {
-  background: #ffffff;
-  width: 100%;
-  max-width: 500px;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+/* ==============================
+   HEADER / MAIN
+============================== */
+main {
+    padding: 30px 40px;
+    border-bottom: 1px solid #1e293b;
+    
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* =========================
-   INPUT SECTION
-========================= */
-.input-group {
-  display: flex;
-  gap: 10px;
+/* Botón principal */
+.btn-primary {
+    background: #2563eb;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s ease;
 }
 
-input[type="text"] {
-  flex: 1;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+.btn-primary:hover {
+    background: #1d4ed8;
 }
 
-input:focus {
-  outline: none;
-  border-color: #4CAF50;
+/* Botón secundario */
+.btn-secondary {
+    background: #334155;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: #e2e8f0;
+    cursor: pointer;
 }
 
-button {
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s ease;
+.btn-secondary:hover {
+    background: #475569;
 }
 
-.add-btn {
-  background: #4CAF50;
-  color: white;
+/* Buscador */
+.search {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    width: 220px;
 }
 
-.add-btn:hover {
-  background: #45a049;
+.search:focus {
+    outline: none;
+    border-color: #2563eb;
 }
 
-/* =========================
-   LIST
-========================= */
-ul {
-  list-style: none;
-  margin-top: 20px;
+/* ==============================
+   KANBAN
+============================== */
+.tasks-section {
+    padding: 30px 40px;
 }
 
-li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  transition: 0.2s ease;
-  animation: fadeIn 0.3s ease;
+.kanban {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
 }
 
-li.completed span {
-  text-decoration: line-through;
-  opacity: 0.6;
+/* ==============================
+   COLUMNAS
+============================== */
+.column {
+    flex: 1;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 15px;
+    min-height: 500px;
+    border: 1px solid #334155;
 }
 
-li:hover {
-  background: #f1f1f1;
+.column h3 {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
 }
 
-.task-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* Indicador minimalista por prioridad */
+#Baja h3::before {
+    content: "● ";
+    color: #22c55e;
 }
 
+#Media h3::before {
+    content: "● ";
+    color: #facc15;
+}
+
+#Alta h3::before {
+    content: "● ";
+    color: #ef4444;
+}
+
+/* ==============================
+   CARD
+============================== */
+.task-card {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.task-card:hover {
+    background: #172033;
+    border-color: #2563eb;
+}
+
+/* Título */
+.task-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #f1f5f9;
+}
+
+/* Texto */
+.task-card p {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+}
+
+/* Fecha */
+.task-card p strong {
+    color: #cbd5e1;
+}
+
+/* ==============================
+   BOTONES CARD
+============================== */
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.edit-btn,
 .delete-btn {
-  background: transparent;
-  color: #ff4d4d;
-  font-weight: bold;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
+/* Editar */
+.edit-btn:hover {
+    color: #3b82f6;
+}
+
+/* Eliminar */
 .delete-btn:hover {
-  transform: scale(1.2);
+    color: #ef4444;
 }
 
-/* =========================
-   FOOTER
-========================= */
-.footer {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* ==============================
+   MODAL
+============================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
 }
 
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.modal-content {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    border: 1px solid #334155;
 }
 
-.filter-btn {
-  background: #eee;
+.modal-content h2 {
+    margin-bottom: 15px;
+    color: #f1f5f9;
 }
 
-.filter-btn.active {
-  background: #4CAF50;
-  color: white;
+.modal-content label {
+    font-size: 13px;
+    color: #94a3b8;
 }
 
-.clear-btn {
-  background: #ff4d4d;
-  color: white;
-  display: none;
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0 15px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: white;
+    font-size: 13px;
 }
 
-.clear-btn:hover {
-  background: #e60000;
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+    outline: none;
+    border-color: #2563eb;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ==============================
+   SCROLL ESTÉTICO
+============================== */
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-/* Responsive */
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.badge.Alta {
+    background: rgba(239,68,68,0.2);
+    color: #ef4444;
+}
+
+.badge.Media {
+    background: rgba(250,204,21,0.2);
+    color: #facc15;
+}
+
+.badge.Baja {
+    background: rgba(34,197,94,0.2);
+    color: #22c55e;
+}
+
+.complete-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.complete-btn:hover {
+    color: #22c55e;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+    transition: 0.3s ease;
+}
+
+#Baja h3::before {
+    content: "● ";
+    color: #22c55e;
+}
+
+#Media h3::before {
+    content: "● ";
+    color: #facc15;
+}
+
+#Alta h3::before {
+    content: "● ";
+    color: #ef4444;
+}
+
+/* SMALL PHONES */
 @media (max-width: 480px) {
-  .todo-app {
-    padding: 20px;
-  }
+
+    main .container {
+        flex-direction: column;
+        gap: 15px;
+        
+    }
+   .tasks-section .kanban {
+       flex-direction: column;
+   }
+   .tasks-section .column {
+       min-height: auto;
+       width: 100%;
+   }
+
+   
 }
+
+
+
+
+
